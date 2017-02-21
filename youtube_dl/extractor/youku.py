@@ -24,7 +24,7 @@ class YoukuIE(InfoExtractor):
     IE_DESC = '优酷'
     _VALID_URL = r'''(?x)
         (?:
-            http://(?:v|player)\.youku\.com/(?:v_show/id_|player\.php/sid/)|
+            http://(?:v|player|m)\.youku\.com/(?:v_show/id_|player\.php/sid/|video/id_)|
             youku:)
         (?P<id>[A-Za-z0-9]+)(?:\.html|/v\.swf|)
     '''
