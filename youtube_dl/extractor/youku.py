@@ -191,16 +191,16 @@ class YoukuIE(InfoExtractor):
 
     def get_format_name(self, fm):
         _dict = {
-            '3gp': 'h6',
-            '3gphd': 'h5',
-            'flv': 'h4',
-            'flvhd': 'h4',
-            'mp4': 'h3',
-            'mp4hd': 'h3',
-            'mp4hd2': 'h4',
-            'mp4hd3': 'h4',
-            'hd2': 'h2',
-            'hd3': 'h1',
+            '3gp': '3gp',
+            '3gphd': '3gphd',
+            'flv': 'flv',
+            'flvhd': 'flvhd',
+            'mp4': 'mp4',
+            'mp4hd': 'mp4hd',
+            'mp4hd2': 'mp4hd2',
+            'mp4hd3': 'mp4hd3',
+            'hd2': 'hd2',
+            'hd3': 'hd3',
         }
         return _dict[fm]
 
