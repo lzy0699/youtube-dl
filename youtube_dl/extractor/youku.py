@@ -105,15 +105,11 @@ class YoukuIE(InfoExtractor):
             if stream.get('channel_type') == 'tail':
                 continue
             format = stream.get('stream_type')
-            fileid = stream['stream_fileid']
+            fileid = [i['fileid'] for i in stream['segs']]
             fileid_dict[format] = fileid
 
         def get_fileid(format, n):
-            number = hex(int(str(n), 10))[2:].upper()
-            if len(number) == 1:
-                number = '0' + number
-            streamfileids = fileid_dict[format]
-            fileid = streamfileids[0:8] + number + streamfileids[10:]
+            fileid = fileid_dict[format][int(n)]
             return fileid
 
         # get ep
@@ -227,7 +223,8 @@ class YoukuIE(InfoExtractor):
         video_password = self._downloader.params.get('videopassword')
 
         # request basic data
-        basic_data_url = 'http://play.youku.com/play/get.json?vid=%s&ct=12' % video_id
+        nowtime=int(float(time.time())*1000)
+        basic_data_url = 'http://play-ali.youku.com/play/get.json?vid=%s&ct=12&time=%s' % (video_id,nowtime)
         if video_password:
             basic_data_url += '&pwd=%s' % video_password
 
